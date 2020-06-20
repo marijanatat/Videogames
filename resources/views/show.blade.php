@@ -2,15 +2,14 @@
 
 @section('content')
 <div class="container mx-auto px-4">
-    <div class="game detail flex border-b border-gray-800 pb-12">
+    <div class="game detail flex flex-col lg:flex-row border-b border-gray-800 pb-12">
         
         <div class="flex-none">
             <img src="/images/tlou2.jpg" alt="cover">
         </div>
 
-        <div class="ml-12 mr-64">
-
-            <h2 class="font-xl font-semibold traking-wide text-3xl">The Last of Us</h2>
+        <div class="lg:ml-12 lg:mr-64">
+            <h2 class="font-xl font-semibold traking-wide text-3xl leading-tight mt-1">The Last of Us</h2>
             
             <div class="mt-2 text-gray-500">
                 <span class="text-white">Genre:</span> 
@@ -37,7 +36,7 @@
                 </div>
 
 
-                <div class="social flex items-center space-x-4 ml-12">
+                <div class="social flex items-center space-x-4 lg:ml-12 mt-4 lg:mt-0">
                     <div class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center">
                         <a href="" class="hover:text-gray-400">
                             <svg class="w-5 h-5 fill-current" viewBox="0 0 14 16" fill="none"><path d="M14 2.5v11a1.5 1.5 0 01-1.5 1.5H9.834V9.463h1.894L12 7.35H9.834V6c0-.612.17-1.028 1.047-1.028H12V3.084A15.044 15.044 0 0010.369 3C8.756 3 7.65 3.984 7.65 5.794v1.56h-1.9v2.112h1.903V15H1.5A1.5 1.5 0 010 13.5v-11A1.5 1.5 0 011.5 1h11A1.5 1.5 0 0114 2.5z" /></svg> 
@@ -82,7 +81,7 @@
             Images
         </h2>
 
-        <div class="grid grid-cols-3 gap-12 mt-8">
+        <div class="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-8">
             <div>
                 <a href="">
                     <img src="/images/screenshot1.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
