@@ -7,135 +7,39 @@
     </h2>
     <div
         class="popular games text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6 gap-12 border-b border-gray-800">
-        <div class="game mt-8">
-            <div class="relative inline-block">
-                <a href=""><img src="/images/doom.jpg " class="hover:opacity-75 transition ease-in-out duration-150"
-                        alt="game cover"></a>
-                <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full"
-                    style="right:-20px;bottom:-20px">
-                    <div class="font-semibold text-xs  h-full flex justify-center items-center">80%</div>
-                </div>
-            </div>
-            <a href="" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">Doom new</a>
-            <div class="text-gray-400 mt-1 ">Playstation 4 </div>
-        </div>
+        @foreach ($popularGames as $game)
 
         <div class="game mt-8">
             <div class="relative inline-block">
-                <a href=""><img src="/images/avengers.jpg " class="hover:opacity-75 transition ease-in-out duration-150"
-                        alt="game cover"></a>
-                <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full"
-                    style="right:-20px;bottom:-20px">
-                    <div class="font-semibold text-xs  h-full flex justify-center items-center">80%</div>
-                </div>
-            </div>
-            <a href="" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">Avengers new</a>
-            <div class="text-gray-400 mt-1 ">XBox,PS4 </div>
-        </div>
-
-        <div class="game mt-8">
-            <div class="relative inline-block">
-                <a href=""><img src="/images/cyberpunk.jpg "
+                <a href=""><img src="{{Str::replaceFirst('thumb','cover_big',$game['cover']['url'])}} "
                         class="hover:opacity-75 transition ease-in-out duration-150" alt="game cover"></a>
-                <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full"
-                    style="right:-20px;bottom:-20px">
-                    <div class="font-semibold text-xs  h-full flex justify-center items-center">80%</div>
-                </div>
-            </div>
-            <a href="" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">Cyberpunk</a>
-            <div class="text-gray-400 mt-1 ">Playstation 4 </div>
-        </div>
 
-        <div class="game mt-8">
-            <div class="relative inline-block">
-                <a href=""><img src="/images/doom.jpg " class="hover:opacity-75 transition ease-in-out duration-150"
-                        alt="game cover"></a>
+             @if(isset($game['rating']))
+                     
                 <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full"
                     style="right:-20px;bottom:-20px">
-                    <div class="font-semibold text-xs  h-full flex justify-center items-center">80%</div>
+                    <div class="font-semibold text-xs  h-full flex justify-center items-center">
+                        {{round($game['rating']).'%'}}
+                        {{-- @if(array_key_exists('rating',$game))
+                        {{round($game['rating']).'%'}},
+                        @endif --}}
+                        {{-- {{round($game['rating']).'%'}} --}}
+                    </div>
                 </div>
+             @endif
             </div>
-            <a href="" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">Doom new</a>
-            <div class="text-gray-400 mt-1 ">Playstation 4 </div>
+            <a href=""
+                class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">{{$game['name']}}</a>
+            <div class="text-gray-400 mt-1 ">
+                @foreach ($game['platforms'] as $platform)
+                  @if(array_key_exists('abbreviation',$platform))
+                   {{$platform['abbreviation']}},
+                   @endif
+                @endforeach
+            </div>
         </div>
+        @endforeach
 
-        <div class="game mt-8">
-            <div class="relative inline-block">
-                <a href=""><img src="/images/doom.jpg " class="hover:opacity-75 transition ease-in-out duration-150"
-                        alt="game cover"></a>
-                <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full"
-                    style="right:-20px;bottom:-20px">
-                    <div class="font-semibold text-xs  h-full flex justify-center items-center">80%</div>
-                </div>
-            </div>
-            <a href="" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">Doom new</a>
-            <div class="text-gray-400 mt-1 ">Playstation 4 </div>
-        </div>
-
-        <div class="game mt-8">
-            <div class="relative inline-block">
-                <a href=""><img src="/images/doom.jpg " class="hover:opacity-75 transition ease-in-out duration-150"
-                        alt="game cover"></a>
-                <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full"
-                    style="right:-20px;bottom:-20px">
-                    <div class="font-semibold text-xs  h-full flex justify-center items-center">80%</div>
-                </div>
-            </div>
-            <a href="" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">Doom new</a>
-            <div class="text-gray-400 mt-1 ">Playstation 4 </div>
-        </div>
-
-        <div class="game mt-8">
-            <div class="relative inline-block">
-                <a href=""><img src="/images/doom.jpg " class="hover:opacity-75 transition ease-in-out duration-150"
-                        alt="game cover"></a>
-                <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full"
-                    style="right:-20px;bottom:-20px">
-                    <div class="font-semibold text-xs  h-full flex justify-center items-center">80%</div>
-                </div>
-            </div>
-            <a href="" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">Doom new</a>
-            <div class="text-gray-400 mt-1 ">Playstation 4 </div>
-        </div>
-
-        <div class="game mt-8">
-            <div class="relative inline-block">
-                <a href=""><img src="/images/animalcrossing.jpg "
-                        class="hover:opacity-75 transition ease-in-out duration-150" alt="game cover"></a>
-                <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full"
-                    style="right:-20px;bottom:-20px">
-                    <div class="font-semibold text-xs  h-full flex justify-center items-center">80%</div>
-                </div>
-            </div>
-            <a href="" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">Animal new</a>
-            <div class="text-gray-400 mt-1 ">Playstation 4 </div>
-        </div>
-
-        <div class="game mt-8">
-            <div class="relative inline-block">
-                <a href=""><img src="/images/animalcrossing.jpg "
-                        class="hover:opacity-75 transition ease-in-out duration-150" alt="game cover"></a>
-                <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full"
-                    style="right:-20px;bottom:-20px">
-                    <div class="font-semibold text-xs  h-full flex justify-center items-center">80%</div>
-                </div>
-            </div>
-            <a href="" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">Animal new</a>
-            <div class="text-gray-400 mt-1 ">Playstation 4 </div>
-        </div>
-
-        <div class="game mt-8">
-            <div class="relative inline-block">
-                <a href=""><img src="/images/animalcrossing.jpg "
-                        class="hover:opacity-75 transition ease-in-out duration-150" alt="game cover"></a>
-                <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full"
-                    style="right:-20px;bottom:-20px">
-                    <div class="font-semibold text-xs  h-full flex justify-center items-center">80%</div>
-                </div>
-            </div>
-            <a href="" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">Animal new</a>
-            <div class="text-gray-400 mt-1 ">Playstation 4 </div>
-        </div>
     </div>
     <!--end popular games-->
 
@@ -146,9 +50,10 @@
                 Recently reviewed
             </h2>
             <div class="recently review container space-y-12 mt-8">
+                @foreach ($recentlyReviewed as $game)
                 <div class="game flex shadow-lg bg-gray-800 rounded-lg px-6 py-6">
                     <div class="relative flex-none">
-                        <a href=""><img src="/images/doom.jpg "
+                        <a href=""><img src="{{Str::replaceFirst('thumb','cover_big',$game['cover']['url'])}} "
                                 class=" w-48 hover:opacity-75 transition ease-in-out duration-150" alt="game cover"></a>
                         <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-900 rounded-full"
                             style="right:-20px;bottom:-20px">
@@ -156,65 +61,32 @@
                         </div>
                     </div>
                     <div class="ml-6 lg:ml-12">
-                        <a href="" class="block text-lg  font-semibold leading-tight hover:text-gray-400 mt-4">Doom
-                            new</a>
-                        <div class="text-gray-400 mt-1">PS4</div>
-                        <p class="mt-6 text-gray-400 text-base hidden lg:block ">Developed by id Software, DOOM Eternal
-                            is the direct sequel to DOOM (2016). Experience the ultimate combination of speed and power
-                            with the next leap in push-forward, first-person combat.
-
-                            As the DOOM Slayer, return to take your vengeance against the forces of Hell. Set to an
-                            all-new pulse pounding soundtrack composed by Mick Gordon, fight across dimensions as you
-                            slay new and classic demons with powerful new weapons and abilities.</p>
-                    </div>
-                </div>
-
-                <div class="game flex shadow-lg bg-gray-800 rounded-lg px-6 py-6">
-                    <div class="relative flex-none">
-                        <a href=""><img src="/images/animalcrossing.jpg "
-                                class=" w-48 hover:opacity-75 transition ease-in-out duration-150" alt="game cover"></a>
-                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-900 rounded-full"
-                            style="right:-20px;bottom:-20px">
-                            <div class="font-semibold text-xs  h-full flex justify-center items-center">80%</div>
+                        <a href=""
+                            class="block text-lg  font-semibold leading-tight hover:text-gray-400 mt-4">{{$game['name']}}</a>
+                        <div class="text-gray-400 mt-1">
+                            @foreach ($game['platforms'] as $platform)
+                            @if(array_key_exists('abbreviation',$platform))
+                            {{$platform['abbreviation']}},
+                            @endif
+                            @endforeach
                         </div>
-                    </div>
-                    <div class="ml-12">
-                        <a href="" class="block text-lg  font-semibold leading-tight hover:text-gray-400 mt-4">Animal
-                            new</a>
-                        <div class="text-gray-400 mt-1">Nintendo</div>
-                        <p class="mt-6 text-gray-400 text-base hidden lg:block">Time passes in Animal Crossing in
-                            real-time, as the month, day, season, and time of day matches that of the player's. Holiday
-                            seasons come and go in Animal Crossing, just as they would in the real world. Experience the
-                            freedom to fish, decorate your house, go bug catching, garden, write letters, and even play
-                            original Nintendo NES games in this imaginative, and addictive game.</p>
-                    </div>
-                </div>
-
-                <div class="game flex shadow-lg bg-gray-800 rounded-lg px-6 py-6">
-                    <div class="relative flex-none">
-                        <a href=""><img src="/images/doom.jpg "
-                                class=" w-48 hover:opacity-75 transition ease-in-out duration-150" alt="game cover"></a>
-                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-900 rounded-full"
-                            style="right:-20px;bottom:-20px">
-                            <div class="font-semibold text-xs  h-full flex justify-center items-center">80%</div>
-                        </div>
-                    </div>
-                    <div class="ml-12">
-                        <a href="" class="block text-lg  font-semibold leading-tight hover:text-gray-400 mt-4">Animal
-                            new</a>
-                        <div class="text-gray-400 mt-1">PS4</div>
-                        <p class="mt-6 text-gray-400 text-base hidden lg:block">Developed by id Software, DOOM Eternal
-                            is the direct sequel to DOOM (2016). Experience the ultimate combination of speed and power
-                            with the next leap in push-forward, first-person combat.
-
-                            As the DOOM Slayer, return to take your vengeance against the forces of Hell. Set to an
-                            all-new pulse pounding soundtrack composed by Mick Gordon, fight across dimensions as you
-                            slay new and classic demons with powerful new weapons and abilities.</p>
+                        @if(isset($game['summary']))
+                           <p class="mt-6 text-gray-400 text-base hidden lg:block ">
+                               {{$game['summary']}},
+                            
+                            {{-- {{$game['summary']}} --}}
+                           </p>
+                        @endif
+                        {{-- <p class="mt-6 text-gray-400 text-base hidden lg:block ">
+                            @if(array_key_exists('summary',$game))
+                               {{$game['summary']}},
+                            @endif
+                            {{-- {{$game['summary']}} --}}
+                        {{-- </p>  --}}
                     </div>
                 </div>
-
+                @endforeach
             </div>
-
         </div>
 
 
@@ -224,79 +96,35 @@
                 Most anticipated
             </h2>
             <div class="most antic container space-y-10 mt-8">
+                @foreach ($mostAnticipated  as $game)        
                 <div class="game flex">
-                    <a href=""><img src="/images/doom.jpg "
+                    <a href=""><img src="{{Str::replaceFirst('thumb','cover_small',$game['cover']['url'])}} "
                             class=" w-16 hover:opacity-75 transition ease-in-out duration-150" alt="game cover"></a>
                     <div class="ml-4">
-                        <a href="" class="hover:text-gray-300">Doom</a>
-                        <div class="text-gray-400 text-sm mt-1"> Sep 16,2020</div>
+                    <a href="" class="hover:text-gray-300">{{$game['name']}}</a>
+                        <div class="text-gray-400 text-sm mt-1">{{Carbon\Carbon::parse($game['first_release_date'])->format('M d,Y')}} </div>
                     </div>
                 </div>
-
-                <div class="game flex">
-                    <a href=""><img src="/images/doom.jpg "
-                            class=" w-16 hover:opacity-75 transition ease-in-out duration-150" alt="game cover"></a>
-                    <div class="ml-4">
-                        <a href="" class="hover:text-gray-300">Doom</a>
-                        <div class="text-gray-400 text-sm mt-1"> Sep 16,2020</div>
-                    </div>
-                </div>
-
-                <div class="game flex">
-                    <a href=""><img src="/images/doom.jpg "
-                            class=" w-16 hover:opacity-75 transition ease-in-out duration-150" alt="game cover"></a>
-                    <div class="ml-4">
-                        <a href="" class="hover:text-gray-300">Doom</a>
-                        <div class="text-gray-400 text-sm mt-1"> Sep 16,2020</div>
-                    </div>
-                </div>
-
-                <div class="game flex">
-                    <a href=""><img src="/images/doom.jpg "
-                            class=" w-16 hover:opacity-75 transition ease-in-out duration-150" alt="game cover"></a>
-                    <div class="ml-4">
-                        <a href="" class="hover:text-gray-300">Doom</a>
-                        <div class="text-gray-400 text-sm mt-1"> Sep 16,2020</div>
-                    </div>
-                </div>
-            </div>
+                @endforeach 
+               
+            </div> <!--end most anti-->
 
 
             <!--comming soon-->
             <h2 class="text-blue-500 uppercase tracking-wide font-semibold mt-12">Coming Soon</h2>
             <div class="most-anticipated-container space-y-10 mt-8">
+                @foreach ($comingSoon as $game)
                 <div class="game flex">
-                    <a href="#"><img src="/images/cyberpunk.jpg" alt="game cover"
+                    <a href="#"><img src="{{Str::replaceFirst('thumb','cover_small',$game['cover']['url'])}} " alt="game cover"
                             class="w-16 hover:opacity-75 transition ease-in-out duration-150"></a>
                     <div class="ml-4">
-                        <a href="#" class="hover:text-gray-300">Cyberpunk 2077</a>
-                        <div class="text-gray-400 text-sm mt-1">Sept 16, 2020</div>
+                        <a href="#" class="hover:text-gray-300">{{$game['name']}}</a>
+                        <div class="text-gray-400 text-sm mt-1">{{Carbon\Carbon::parse($game['first_release_date'])->format('M d,Y')}}</div>
                     </div>
                 </div>
-                <div class="game flex">
-                    <a href="#"><img src="/images/avengers.jpg" alt="game cover"
-                            class="w-16 hover:opacity-75 transition ease-in-out duration-150"></a>
-                    <div class="ml-4">
-                        <a href="#" class="hover:text-gray-300">Marvel's Avengers</a>
-                        <div class="text-gray-400 text-sm mt-1">Sept 3, 2020</div>
-                    </div>
-                </div>
-                <div class="game flex">
-                    <a href="#"><img src="/images/ghost.jpg" alt="game cover"
-                            class="w-16 hover:opacity-75 transition ease-in-out duration-150"></a>
-                    <div class="ml-4">
-                        <a href="#" class="hover:text-gray-300">Ghost of Tsushima</a>
-                        <div class="text-gray-400 text-sm mt-1">July 17, 2020</div>
-                    </div>
-                </div>
-                <div class="game flex">
-                    <a href="#"><img src="/images/tlou2.jpg" alt="game cover"
-                            class="w-16 hover:opacity-75 transition ease-in-out duration-150"></a>
-                    <div class="ml-4">
-                        <a href="#" class="hover:text-gray-300">The Last of Us Part II</a>
-                        <div class="text-gray-400 text-sm mt-1">June 19, 2020</div>
-                    </div>
-                </div>
+                    
+                @endforeach
+                     
             </div>
             <!--end of comming soon-->
 
