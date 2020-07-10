@@ -18,6 +18,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <!-- Styles -->
+    <livewire:styles>
 
 </head>
 
@@ -64,6 +65,7 @@
             Powered by <a href="" class="underline hover:text-gray-400">IGDB API</a>
         </div>
     </footer>
+    <livewire:scripts>
 
 </body>
 
