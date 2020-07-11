@@ -26,18 +26,27 @@
                 {{-- {{$game['summary']}} --}}
                </p>
             @endif
-            {{-- <p class="mt-6 text-gray-400 text-base hidden lg:block ">
-                @if(array_key_exists('summary',$game))
-                   {{$game['summary']}},
-                @endif
-                {{-- {{$game['summary']}} --}}
-            {{-- </p>  --}}
+           
         </div>
     </div>
     @empty
-    <div class="spinner mt-8">
+    @foreach (range(1,3) as $game)
+        
+    <div class="game bg-gray-800 rounded-lg shadow-md flex px-6 py-6">
+        <div class="relative flex-none">
+            <div class="bg-gray-700 w-32 lg:w-44 h-40 xl:h-56"></div>
+        </div>
+        <div class="ml-6 lg:ml-12">
+            <div class="inline-block text-xl font-semibold leading-tight bg-gray-800 text-transparent rounded mt-4">Title goes here</div>
+            <div class="mt-8 space-y-4 hidden lg:block">
+               <span class="text-transparent bg-gray-800 rounded inline-block">Lorem ipsum jjjhfjgj hfgjjjjgjfjfj</span>
+               <span class="text-transparent bg-gray-800 rounded inline-block">Lorem ipsum</span>
+               <span class="text-transparent bg-gray-800 rounded inline-block">Lorem ipsum</span>
+            </div>
+        </div>
 
     </div>
+    @endforeach
     
     @endforelse
 </div>

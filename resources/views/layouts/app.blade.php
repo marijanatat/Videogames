@@ -27,7 +27,7 @@
     <header class="border-b border-gray-900">
         <nav class="container mx-auto flex flex-col lg:flex-row items-center justify-between px-4 py-6">
             <div class="flex items-center flex-col lg:flex-row ">
-                <a href="#">
+                <a href="/">
                     <img src="/images/laracasts-logo.svg" alt="logo" class="w-32 flex-none">
                 </a>
                 <ul class="flex ml-0 lg:ml-16 mt-6 lg:mt-0 space-x-8">

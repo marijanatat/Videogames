@@ -17,12 +17,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('index');
 // });
 
-Route::get('/','GamesController@index')->name('games.index');
 
-Route::get('show',function(){
-    return view('show');
-});
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/','GamesController@index')->name('games.index');
+Route::get('/games/{slug}', 'GamesController@show')->name('games.show');

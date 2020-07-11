@@ -10,11 +10,15 @@
     </div>
     @empty
         
-   <div>
-     <div class="spinner mt-8">
-
-     </div>
-   </div>
+    @foreach (range(1,4) as $game)  
+    <div class="game flex">
+        <div class="bg-gray-800 w-16 h-20 flex-none"></div>
+            <div class="ml-4">
+                <div class="text-transparent bg-gray-700 rounded leading-tight ">Title goes here hhhhh ggggg</div>
+                <div class="text-transparent bg-gray-700 rounded inline-block mt-3 text-sm">Sept ,14 </div>
+            </div>
+    </div>
+@endforeach
         
     @endforelse
          

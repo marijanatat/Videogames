@@ -5,32 +5,52 @@
     <div class="game detail flex flex-col lg:flex-row border-b border-gray-800 pb-12">
         
         <div class="flex-none">
-            <img src="/images/tlou2.jpg" alt="cover">
+            <img src="{{Str::replaceFirst('thumb','cover_big',$game['cover']['url'])}}" alt="cover">
         </div>
 
         <div class="lg:ml-12 lg:mr-64">
-            <h2 class="font-xl font-semibold traking-wide text-3xl leading-tight mt-1">The Last of Us</h2>
-            
+            <h2 class="font-xl font-semibold traking-wide text-3xl leading-tight mt-1">{{$game['name']}}</h2>    
             <div class="mt-2 text-gray-500">
-                <span class="text-white">Genre:</span> 
+                <span class="text-white">
+                    @foreach ($game['genres'] as $genre)
+                        {{$genre['name']}},   
+                    @endforeach
+                </span> 
                 &middot;
-                <span>Adventure, Shooter </span>
+                <span>{{$game['involved_companies'][0]['company']['name']}} </span>
                 &middot; 
-                <span>PlayStation 4</span>
+                <span>
+                    @foreach ($game['platforms'] as $platform)
+                        @if(array_key_exists('abbreviation',$platform))
+                        {{$platform['abbreviation']}},
+                        @endif
+                    @endforeach
+                </span>
             </div>
             
             <div class="flex flex-wrap items-center mt-8 ">
-                
                 <div class="flex items-center">
                     <div class="w-16 h-16 bg-gray-800 rounded-full">
-                        <div class="font-semibold text-xs  h-full flex justify-center items-center">90%</div>
+                        <div class="font-semibold text-xs  h-full flex justify-center items-center">
+                           @if (array_key_exists('rating',$game))
+                           {{round($game['rating']).'%'}}  
+                           @else
+                               0%                
+                           @endif
+                        </div>
                     </div>
                     <div class="ml-4 text-xs"> Member <br> score</div>
                 </div>
 
                 <div class="flex items-center ml-12">
                     <div class="w-16 h-16 bg-gray-800 rounded-full">
-                        <div class="font-semibold text-xs  h-full flex justify-center items-center">80%</div>
+                        <div class="font-semibold text-xs  h-full flex justify-center items-center">
+                             @if (array_key_exists('aggregated_rating',$game))
+                           {{round($game['aggregated_rating']).'%'}}  
+                           @else
+                               0%                
+                           @endif
+                        </div>
                     </div>
                     <div class="ml-4 text-xs"> Critic <br> score</div>
                 </div>
@@ -64,13 +84,17 @@
                 </div>
 
             </div>
-            <p class="mt-12"> A third person shooter/stealth/survival hybrid, in which twenty years after the outbreak of a parasitic fungus which takes over the neural functions of humans, Joel, a Texan with a tragic familial past, finds himself responsible with smuggling a fourteen year old girl named Ellie to a militia group called the Fireflies, while avoiding strict and deadly authorities, infected fungal hosts and other violent survivors.</p>
+            <p class="mt-12">{{$game['summary']}}</p>
 
             <div class="mt-12 ">
-               <button class=" bg-blue-500 flex font-semibold text-white px-4 py-4 hover:bg-blue-600 rounded transition ease-in-out duration-150">
+                {{-- <button class=" bg-blue-500 flex font-semibold text-white px-4 py-4 hover:bg-blue-600 rounded transition ease-in-out duration-150">
+                    <svg class="w-6 fill-current" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg>
+                    <span class="ml-2">Play Trailer</span>
+                </button> --}}
+            <a href="https://youtube.com/watch/{{$game['videos'][0]['video_id']}}" class="inline-flex bg-blue-500 flex font-semibold text-white px-4 py-4 hover:bg-blue-600 rounded transition ease-in-out duration-150">
                 <svg class="w-6 fill-current" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg>
                 <span class="ml-2">Play Trailer</span>
-                </button>
+               </a>
             </div>
         </div> <!--kraj dela sa tekstom -->
     </div><!--end game details-->
@@ -82,131 +106,52 @@
         </h2>
 
         <div class="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-8">
-            <div>
-                <a href="">
-                    <img src="/images/screenshot1.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
-                </a>
-            </div>
-
-            <div>
-                <a href="">
-                    <img src="/images/screenshot2.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
-                </a>
-            </div>
-
-            <div>
-                <a href="">
-                    <img src="/images/screenshot3.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
-                </a>
-            </div>
-
-            <div>
-                <a href="">
-                    <img src="/images/screenshot4.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
-                </a>
-            </div>
-
-            <div>
-                <a href="">
-                    <img src="/images/screenshot5.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
-                </a>
-            </div>
-
-            <div>
-                <a href="">
-                    <img src="/images/screenshot6.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
-                </a>
-            </div>
-
+            @foreach ($game['screenshots'] as $screenshot)
+                <div>
+                    <a href="{{Str::replaceFirst('thumb','screenshot_huge',$screenshot['url'])}} ">
+                        <img src="{{Str::replaceFirst('thumb','screenshot_huge',$screenshot['url'])}}" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150">
+                    </a>
+                </div>
+            @endforeach
         </div><!--end of grid-->
-
     </div><!--end image container-->
 
     <div class="similar games container  mt-8">
         <h2 class="text-blue-500 uppercase tracking-wide font-semibold">
             Similar games
         </h2>
-
         <div class="popular games text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6 gap-12 ">
-          <div class="game mt-8">
-             <div class="relative inline-block">
-                <a href=""><img src="/images/doom.jpg " class="hover:opacity-75 transition ease-in-out duration-150"
-                        alt="game cover"></a>
-                <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full"
-                    style="right:-20px;bottom:-20px">
-                    <div class="font-semibold text-xs  h-full flex justify-center items-center">80%</div>
+             @foreach ($game['similar_games'] as $game)
+                    <div class="game mt-8">
+                        <div class="relative inline-block">
+                            @if (array_key_exists('cover'$game))
+                                <a href="">
+                                    <img src="{{Str::replaceFirst('thumb','cover_big',$game['cover']['url'])}}" class="hover:opacity-75 transition ease-in-out duration-150"
+                                        alt="game cover">
+                                </a>
+                            @endif 
+                         @if (isset($game['rating']))
+                            
+                                <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full"
+                                    style="right:-20px;bottom:-20px">
+                            <div class="font-semibold text-xs  h-full flex justify-center items-center">{{round($game['rating']).'%'}}</div>
+                                </div>
+                        @endif
+                        </div>
+                        <a href="" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">{{$game['name']}}</a>
+                    
+                        @if(array_key_exists('platforms',$game))
+                            <div class="text-gray-400 mt-1 ">
+                                @foreach ($game['platforms'] as $platform)
+                                    @if(array_key_exists('abbreviation',$platform))
+                                    {{$platform['abbreviation']}},
+                                    @endif
+                                @endforeach 
+                            </div>
+                        @endif
                 </div>
-             </div>
-            <a href="" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">Doom new</a>
-            <div class="text-gray-400 mt-1 ">Playstation 4 </div>
-        </div>
-
-        <div class="game mt-8">
-            <div class="relative inline-block">
-                <a href=""><img src="/images/avengers.jpg " class="hover:opacity-75 transition ease-in-out duration-150"
-                        alt="game cover"></a>
-                <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full"
-                    style="right:-20px;bottom:-20px">
-                    <div class="font-semibold text-xs  h-full flex justify-center items-center">80%</div>
-                </div>
-            </div>
-            <a href="" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">Avengers new</a>
-            <div class="text-gray-400 mt-1 ">XBox,PS4 </div>
-        </div>
-
-        <div class="game mt-8">
-            <div class="relative inline-block">
-                <a href=""><img src="/images/cyberpunk.jpg "
-                        class="hover:opacity-75 transition ease-in-out duration-150" alt="game cover"></a>
-                <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full"
-                    style="right:-20px;bottom:-20px">
-                    <div class="font-semibold text-xs  h-full flex justify-center items-center">80%</div>
-                </div>
-            </div>
-            <a href="" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">Cyberpunk</a>
-            <div class="text-gray-400 mt-1 ">Playstation 4 </div>
-        </div>
-
-        <div class="game mt-8">
-            <div class="relative inline-block">
-                <a href=""><img src="/images/doom.jpg " class="hover:opacity-75 transition ease-in-out duration-150"
-                        alt="game cover"></a>
-                <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full"
-                    style="right:-20px;bottom:-20px">
-                    <div class="font-semibold text-xs  h-full flex justify-center items-center">80%</div>
-                </div>
-            </div>
-            <a href="" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">Doom new</a>
-            <div class="text-gray-400 mt-1 ">Playstation 4 </div>
-        </div>
-
-        <div class="game mt-8">
-            <div class="relative inline-block">
-                <a href=""><img src="/images/doom.jpg " class="hover:opacity-75 transition ease-in-out duration-150"
-                        alt="game cover"></a>
-                <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full"
-                    style="right:-20px;bottom:-20px">
-                    <div class="font-semibold text-xs  h-full flex justify-center items-center">80%</div>
-                </div>
-            </div>
-            <a href="" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">Doom new</a>
-            <div class="text-gray-400 mt-1 ">Playstation 4 </div>
-        </div>
-
-        <div class="game mt-8">
-            <div class="relative inline-block">
-                <a href=""><img src="/images/doom.jpg " class="hover:opacity-75 transition ease-in-out duration-150"
-                        alt="game cover"></a>
-                <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full"
-                    style="right:-20px;bottom:-20px">
-                    <div class="font-semibold text-xs  h-full flex justify-center items-center">80%</div>
-                </div>
-            </div>
-            <a href="" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">Doom new</a>
-            <div class="text-gray-400 mt-1 ">Playstation 4 </div>
-        </div>
-  
-    </div>
+        @endforeach  
+      </div>
     </div> <!--end similar games-->
 
 </div>
