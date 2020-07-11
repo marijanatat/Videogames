@@ -124,7 +124,7 @@
              @foreach ($game['similar_games'] as $game)
                     <div class="game mt-8">
                         <div class="relative inline-block">
-                            @if (array_key_exists('cover'$game))
+                            @if (array_key_exists('cover',$game))
                                 <a href="">
                                     <img src="{{Str::replaceFirst('thumb','cover_big',$game['cover']['url'])}}" class="hover:opacity-75 transition ease-in-out duration-150"
                                         alt="game cover">
