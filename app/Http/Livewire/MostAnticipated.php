@@ -21,7 +21,7 @@ class MostAnticipated extends Component
         $this->mostAnticipated = Http::withHeaders(config('services.igdb'))
         ->withOptions([
             'body'=>
-            "  fields name, cover.url, first_release_date, popularity, platforms.abbreviation, rating, rating_count, summary; 
+            "  fields name, slug,cover.url, first_release_date, popularity, platforms.abbreviation, rating, rating_count, summary; 
             where platforms = (6,48,130,49)
             &(first_release_date>={$current}
             &first_release_date<{$afterFourMonths});

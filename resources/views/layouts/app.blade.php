@@ -37,7 +37,8 @@
                 </ul>
             </div>
             <div class="flex mt-6 lg:mt-0 items-center ">
-                <div class="relative">
+                <livewire:search-dropdown>
+                {{-- <div class="relative">
                     <input type="text"
                         class="pl-8 bg-gray-800 text-sm rounded-full px-3 py-1 w-64 focus:outline-none focus:shadow-outline "
                         placeholder="Search...">
@@ -47,7 +48,7 @@
                         </svg>
                     </div>
 
-                </div>
+                </div> --}}
                 <div class="ml-6">
                     <a href=""><img src="/images/avatar.jpg" alt="avatar" class="rounded-full w-8"></img></a>
                 </div>

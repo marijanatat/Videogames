@@ -14,12 +14,14 @@
         <div class="lg:ml-12 lg:mr-64">
             <h2 class="font-xl font-semibold traking-wide text-3xl leading-tight mt-1">{{$game['name']}}</h2>    
             <div class="mt-2 text-gray-500">
+                @if($game['genres'])
                 <span class="text-white">
                      {{$game['genres']}} 
                     {{-- @foreach ($game['genres'] as $genre)
                         {{$genre['name']}},   
                     @endforeach --}}
                 </span> 
+                @endif
                 &middot;
                 <span>{{$game['involvedCompanies']}} </span>
                 &middot; 
@@ -131,20 +133,20 @@
                     <div class="game mt-8">
                         <div class="relative inline-block">
                         
-                                <a href="">
+                                <a href="{{route('games.show',$game['slug'])}}">
                                     <img src="{{$game['coverImageUrl']}}" class="hover:opacity-75 transition ease-in-out duration-150"
                                         alt="game cover">
                                 </a>
                             
-                         @if ($game['rating'])
+                         {{-- @if ($game['rating']) --}}
                             
                             <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full"
                                     style="right:-20px;bottom:-20px">
                             <div class="font-semibold text-xs  h-full flex justify-center items-center">{{$game['rating']}}</div>
                                 </div>
-                        @endif
+                        {{-- @endif --}}
                         </div>
-                        <a href="" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">{{$game['name']}}</a>
+                        <a href="{{route('games.show',$game['slug'])}}" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">{{$game['name']}}</a>
                     
                      
                             <div class="text-gray-400 mt-1 ">

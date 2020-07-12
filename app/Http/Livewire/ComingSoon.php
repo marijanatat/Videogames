@@ -19,7 +19,7 @@ class ComingSoon extends Component
         $this->comingSoon = Http::withHeaders(config('services.igdb'))
         ->withOptions([
             'body'=>
-            "  fields name, cover.url, first_release_date, popularity, platforms.abbreviation, rating, rating_count, summary; 
+            "  fields name, slug,cover.url, first_release_date, popularity, platforms.abbreviation, rating, rating_count, summary; 
             where platforms = (6,48,130,49)
             &(first_release_date>={$current} 
             &popularity>5);
