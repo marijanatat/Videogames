@@ -1,7 +1,9 @@
 
-    <div class="relative">
+    <div class="relative" x-data="{isOpen:true}" @click.away="isOpen=false">
         <input type="text" wire:model.debounce.500ms='search'
             class=" pl-8 bg-gray-800 text-sm rounded-full px-3 py-1 w-64 focus:outline-none focus:shadow-outline "
+            @focus="isOpen =true" 
+            @keydown.escape.window="isOpen=false"
             placeholder="Search...">
             <div class="absolute top-0 flex items-center h-full ml-2">
                 <svg class="fill-current text-gray-400 w-4 " viewBox="0 0 24 24" stroke="currentColor">
@@ -16,7 +18,9 @@
 
             @if (strlen($search) >= 2)
         <div class="absolute z-50 bg-gray-800 text-xs rounded w-64 mt-2"
-        x-show.transition.opacity.duration.200="isVisible">
+                  x-show="isOpen"
+              
+                  >
             @if (count($searchResults) > 0)
                 <ul>
                     @foreach ($searchResults as $game)
